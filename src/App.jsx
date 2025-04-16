@@ -109,6 +109,35 @@ function App() {
                     <Link to="/rate-cards/setup" className="dropdown-item">
                       Rate Card Setup
                     </Link>
+                    <div className="dropdown-section">
+                      <button className="dropdown-item">Rate Card Types ▼</button>
+                      <div className="dropdown-submenu">
+                        <Link to="/rate-cards/types/flat" className="dropdown-item">
+                          🧾 Flat Rate
+                        </Link>
+                        <Link to="/rate-cards/types/word" className="dropdown-item">
+                          📏 Word-Based
+                        </Link>
+                        <Link to="/rate-cards/types/line" className="dropdown-item">
+                          🧱 Line Rate
+                        </Link>
+                        <Link to="/rate-cards/types/modular" className="dropdown-item">
+                          📐 Modular
+                        </Link>
+                        <Link to="/rate-cards/types/column-inch" className="dropdown-item">
+                          📰 Column Inch
+                        </Link>
+                        <Link to="/rate-cards/types/tiered" className="dropdown-item">
+                          📊 Tiered
+                        </Link>
+                        <Link to="/rate-cards/types/performance" className="dropdown-item">
+                          🎯 Performance
+                        </Link>
+                        <Link to="/rate-cards/types/custom" className="dropdown-item">
+                          ⚙️ Custom
+                        </Link>
+                      </div>
+                    </div>
                     <Link to="/discounts" className="dropdown-item">
                       Discounts/Overrides
                     </Link>
@@ -176,6 +205,14 @@ function App() {
               <Route path="/order-system/setup" element={<OrderSystemSetup />} />
               <Route path="/rate-cards/:category" element={<RateCardPage />} />
               <Route path="/rate-cards/setup" element={<RateCardSetup />} />
+              <Route path="/rate-cards/types/flat" element={<RateCardPage type="flat" />} />
+              <Route path="/rate-cards/types/word" element={<RateCardPage type="word" />} />
+              <Route path="/rate-cards/types/line" element={<RateCardPage type="line" />} />
+              <Route path="/rate-cards/types/modular" element={<RateCardPage type="modular" />} />
+              <Route path="/rate-cards/types/column-inch" element={<RateCardPage type="column-inch" />} />
+              <Route path="/rate-cards/types/tiered" element={<RateCardPage type="tiered" />} />
+              <Route path="/rate-cards/types/performance" element={<RateCardPage type="performance" />} />
+              <Route path="/rate-cards/types/custom" element={<RateCardPage type="custom" />} />
               <Route path="/discounts" element={<DiscountsPage />} />
               <Route path="/discounts/edit/:id" element={<EditDiscount />} />
               <Route path="/discounts/new" element={<CreateDiscount />} />
