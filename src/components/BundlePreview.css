@@ -1,1 +1,159 @@
- 
+.bundle-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bundle-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.bundle-header h2 {
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+}
+
+.bundle-header .description {
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+.price-tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #2c5282;
+  color: white;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.bundle-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.section h3 {
+  color: #1a365d;
+  margin-bottom: 1rem;
+}
+
+.feature-list,
+.conditions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li,
+.conditions-list li {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.comparison-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.comparison-section h3 {
+  color: #1a365d;
+  margin-bottom: 1rem;
+}
+
+.price-comparison {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.price-difference {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.price-difference.cheaper {
+  background: #c6f6d5;
+  color: #2f855a;
+}
+
+.price-difference.more-expensive {
+  background: #fed7d7;
+  color: #c53030;
+}
+
+.features-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.add-ons-comparison,
+.enhancements-comparison {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.add-ons-comparison h4,
+.enhancements-comparison h4 {
+  color: #1a365d;
+  margin-bottom: 1rem;
+}
+
+.unique-features,
+.missing-features {
+  margin-bottom: 1rem;
+}
+
+.unique-features h5,
+.missing-features h5 {
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+}
+
+.unique-features ul,
+.missing-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.unique-features li,
+.missing-features li {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .bundle-preview {
+    padding: 1rem;
+  }
+
+  .bundle-details,
+  .features-comparison {
+    grid-template-columns: 1fr;
+  }
+} 

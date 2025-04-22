@@ -1,0 +1,28 @@
+.back-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.back-button:hover {
+  background-color: rgba(33, 150, 243, 0.1);
+  color: var(--primary-color-dark);
+}
+
+.back-arrow {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.back-text {
+  font-weight: 500;
+} 

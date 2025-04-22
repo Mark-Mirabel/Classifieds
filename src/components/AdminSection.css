@@ -12,82 +12,141 @@
 }
 
 .admin-section-content {
-  background: white;
-  border-radius: 0.5rem;
+  background-color: white;
+  border-radius: 8px;
   width: 90%;
-  max-width: 1000px;
+  max-width: 1200px;
   max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .admin-section-header {
-  position: sticky;
-  top: 0;
-  background: white;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
 }
 
 .admin-section-header h2 {
   margin: 0;
-  color: var(--primary-color);
+  font-size: 24px;
+  color: #333;
 }
 
 .close-button {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 24px;
   cursor: pointer;
-  color: var(--text-color);
-  padding: 0.25rem;
-  transition: color 0.2s ease;
-}
-
-.close-button:hover {
-  color: var(--primary-color);
+  color: #666;
 }
 
 .admin-section-tabs {
   display: flex;
-  border-bottom: 1px solid var(--border-color);
-  padding: 0 1.5rem;
-  background: var(--bg-color-light);
+  border-bottom: 1px solid #eee;
+  padding: 0 20px;
 }
 
 .tab-button {
-  padding: 0.75rem 1.5rem;
+  padding: 12px 20px;
   background: none;
   border: none;
-  border-bottom: 2px solid transparent;
-  color: var(--text-color);
-  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.tab-button:hover {
-  color: var(--primary-color);
-  background: rgba(37, 99, 235, 0.05);
+  font-size: 16px;
+  color: #666;
+  position: relative;
 }
 
 .tab-button.active {
-  color: var(--primary-color);
-  border-bottom-color: var(--primary-color);
-  background: white;
+  color: #007bff;
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #007bff;
 }
 
 .tab-content {
-  padding: 1.5rem;
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .tab-content h3 {
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
+  margin-top: 0;
+  color: #333;
+}
+
+/* Style selector specific styles */
+.tab-content .style-selector {
+  padding: 0;
+  max-width: none;
+  margin: 0;
+}
+
+.tab-content .style-selector h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tab-content .style-selector .description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tab-content .styles-grid {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.tab-content .style-card {
+  margin: 0;
+  padding: 1rem;
+}
+
+.tab-content .style-preview {
+  height: 100px;
+}
+
+.tab-content .style-info h3 {
+  font-size: 1.1rem;
+}
+
+.tab-content .style-info p {
+  font-size: 0.9rem;
+}
+
+.tab-content .style-features li {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .admin-section-content {
+    width: 95%;
+  }
+
+  .admin-section-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 10px;
+  }
+
+  .tab-button {
+    padding: 10px 15px;
+  }
+
+  .tab-content .styles-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Rates Grid */

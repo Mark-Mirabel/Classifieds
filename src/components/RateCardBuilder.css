@@ -1,1 +1,416 @@
- 
+.rate-card-builder {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.wizard-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.wizard-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.header-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+}
+
+.exit-button {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.exit-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.progress-step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e9ecef;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.progress-step.active {
+  background-color: #6c5ce7;
+  color: white;
+}
+
+.step-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.name-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #e9ecef;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.type-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.type-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.type-card.selected {
+  border-color: #6c5ce7;
+  background-color: #f0f0ff;
+}
+
+.type-card h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.type-card p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.rates-table {
+  margin-top: 1rem;
+}
+
+.rates-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rates-table th,
+.rates-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.rates-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.rates-table input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+}
+
+.add-rate-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-rate-button:hover {
+  background-color: #5b4bc4;
+}
+
+.add-ons-grid,
+.discounts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.add-on-card,
+.discount-card {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.add-on-card:hover,
+.discount-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-on-card.selected,
+.discount-card.selected {
+  border-color: #6c5ce7;
+  background-color: #f0f0ff;
+}
+
+.add-on-card h3,
+.discount-card h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.add-on-card p {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.add-on-price,
+.discount-value {
+  font-weight: 600;
+  color: #6c5ce7;
+}
+
+.review-section {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.review-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.review-item h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.review-item p,
+.review-item ul {
+  color: #6c757d;
+}
+
+.review-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.review-item li {
+  margin-bottom: 0.5rem;
+}
+
+.wizard-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.back-button,
+.next-button,
+.save-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.back-button {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+.back-button:hover {
+  background-color: #dee2e6;
+  transform: translateX(-2px);
+}
+
+.back-button:before {
+  content: '←';
+  font-size: 1.2rem;
+}
+
+.next-button,
+.save-button {
+  background-color: #6c5ce7;
+  color: white;
+}
+
+.next-button:hover,
+.save-button:hover {
+  background-color: #5b4bc4;
+}
+
+.next-button:disabled,
+.save-button:disabled {
+  background-color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .rate-card-builder {
+    background-color: #2d3436;
+    color: #f8f9fa;
+  }
+
+  .step-content {
+    background: #34495e;
+  }
+
+  .name-input {
+    background-color: #2d3436;
+    color: #f8f9fa;
+    border-color: #34495e;
+  }
+
+  .type-card,
+  .add-on-card,
+  .discount-card,
+  .review-item {
+    background: #2d3436;
+  }
+
+  .type-card h3,
+  .add-on-card h3,
+  .discount-card h3,
+  .review-item h3 {
+    color: #f8f9fa;
+  }
+
+  .type-card p,
+  .add-on-card p,
+  .review-item p,
+  .review-item ul {
+    color: #a0aec0;
+  }
+
+  .rates-table th {
+    background-color: #2d3436;
+  }
+
+  .rates-table input {
+    background-color: #2d3436;
+    color: #f8f9fa;
+    border-color: #34495e;
+  }
+
+  .wizard-actions {
+    background: #34495e;
+  }
+
+  .back-button {
+    background-color: #2d3436;
+    color: #f8f9fa;
+  }
+
+  .back-button:hover {
+    background-color: #34495e;
+  }
+
+  .exit-button {
+    background-color: #c0392b;
+  }
+
+  .exit-button:hover {
+    background-color: #a93226;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .rate-card-builder {
+    padding: 1rem;
+  }
+
+  .wizard-header h1 {
+    font-size: 2rem;
+  }
+
+  .progress-step {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+
+  .step-content {
+    padding: 1rem;
+  }
+
+  .type-grid,
+  .add-ons-grid,
+  .discounts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wizard-actions {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .back-button,
+  .next-button,
+  .save-button {
+    width: 100%;
+  }
+
+  .header-actions {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .exit-button {
+    width: 100%;
+  }
+} 

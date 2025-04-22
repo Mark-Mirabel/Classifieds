@@ -1,1 +1,276 @@
- 
+.discounts-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.add-new-button {
+  padding: 0.75rem 1.5rem;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-new-button:hover {
+  background: #357abd;
+}
+
+.discounts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.discount-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.discount-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.discount-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.discount-icon {
+  font-size: 1.5rem;
+}
+
+.discount-header h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin: 0;
+  flex: 1;
+}
+
+.category-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background: #50c878;
+  color: white;
+}
+
+.status-badge.inactive {
+  background: #ff6b6b;
+  color: white;
+}
+
+.discount-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.rules-section {
+  margin-bottom: 1.5rem;
+}
+
+.rules-section h4 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.fixed-rules {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.discount-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 0.75rem;
+  border-radius: 4px;
+  min-width: 80px;
+}
+
+.discount-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+.discount-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.duration-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.duration-label {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.duration-value {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.tiered-rules {
+  display: grid;
+  gap: 1rem;
+}
+
+.tier {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.tier-quantity,
+.tier-discount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quantity,
+.discount {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #4a90e2;
+}
+
+.quantity-label,
+.discount-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.conditions-section {
+  margin-bottom: 1.5rem;
+}
+
+.conditions-section h4 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.conditions-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.conditions-section li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.condition-icon {
+  color: #4a90e2;
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.edit-button,
+.toggle-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex: 1;
+}
+
+.edit-button {
+  background: #4a90e2;
+  color: white;
+}
+
+.edit-button:hover {
+  background: #357abd;
+}
+
+.toggle-button {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.toggle-button:hover {
+  background: #e5e5e5;
+}
+
+@media (max-width: 768px) {
+  .discounts-page {
+    padding: 1rem;
+  }
+
+  .discounts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discount-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+} 

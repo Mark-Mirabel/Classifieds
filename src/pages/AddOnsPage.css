@@ -1,0 +1,292 @@
+.add-ons-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.category-section {
+  margin-bottom: 3rem;
+}
+
+.category-header {
+  font-size: 1.8rem;
+  color: #444;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #eee;
+}
+
+.add-ons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.add-on-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.add-on-card:hover {
+  transform: translateY(-5px);
+}
+
+.add-on-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.add-on-icon {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+}
+
+.add-on-header h3 {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background-color: #e3f7e3;
+  color: #2c7a2c;
+}
+
+.status-badge.inactive {
+  background-color: #f7e3e3;
+  color: #7a2c2c;
+}
+
+.add-on-description {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.add-on-price {
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.period {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.add-on-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.add-on-features li {
+  color: #555;
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.add-on-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+}
+
+.add-on-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.edit-button,
+.toggle-button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.edit-button:hover {
+  background-color: #e0e0e0;
+}
+
+.toggle-button {
+  color: white;
+}
+
+.toggle-button.active {
+  background-color: #dc3545;
+}
+
+.toggle-button.inactive {
+  background-color: #28a745;
+}
+
+.toggle-button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .add-ons-page {
+    padding: 1rem;
+  }
+
+  .add-ons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+}
+
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.edit-modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.feature-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.feature-input input {
+  flex: 1;
+}
+
+.remove-feature {
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.add-feature {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cancel-button,
+.save-button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cancel-button {
+  background: none;
+  border: 1px solid #ddd;
+}
+
+.save-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+} 

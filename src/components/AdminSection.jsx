@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './AdminSection.css';
+import StyleSelector from '../pages/StyleSelector';
 
 const AdminSection = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState('rates');
@@ -8,7 +9,8 @@ const AdminSection = ({ onClose }) => {
     { id: 'rates', label: 'Rates' },
     { id: 'cards', label: 'Cards' },
     { id: 'addons', label: 'Add-ons' },
-    { id: 'enhancements', label: 'Enhancements' }
+    { id: 'enhancements', label: 'Enhancements' },
+    { id: 'styles', label: 'Styles' }
   ];
 
   const renderTabContent = () => {
@@ -112,6 +114,12 @@ const AdminSection = ({ onClose }) => {
                 <p>Price: $20</p>
               </div>
             </div>
+          </div>
+        );
+      case 'styles':
+        return (
+          <div className="tab-content">
+            <StyleSelector />
           </div>
         );
       default:

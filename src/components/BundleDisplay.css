@@ -1,1 +1,215 @@
- 
+.bundle-card {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 400px;
+  margin: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.bundle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.popular-badge,
+.limited-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.popular-badge {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.limited-badge {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.bundle-header {
+  margin-bottom: 1.5rem;
+}
+
+.bundle-name {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.bundle-description {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.bundle-features {
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+  color: #2c3e50;
+}
+
+.feature-icon {
+  font-size: 1.25rem;
+}
+
+.feature-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.bundle-pricing {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.original-price {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.savings-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.select-bundle-button {
+  width: 100%;
+  padding: 1rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.select-bundle-button:hover {
+  background: #2980b9;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .bundle-card {
+    background: #2d2d2d;
+    border-color: #404040;
+  }
+
+  .bundle-name {
+    color: #ffffff;
+  }
+
+  .bundle-description {
+    color: #a0aec0;
+  }
+
+  .bundle-features {
+    border-color: #404040;
+  }
+
+  .feature-item {
+    color: #e2e8f0;
+  }
+
+  .current-price {
+    color: #ffffff;
+  }
+
+  .original-price {
+    color: #94a3b8;
+  }
+
+  .popular-badge {
+    background: #422006;
+    color: #fdba74;
+  }
+
+  .limited-badge {
+    background: #1e3a8a;
+    color: #93c5fd;
+  }
+
+  .savings-badge {
+    background: #14532d;
+    color: #86efac;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bundle-card {
+    margin: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .bundle-name {
+    font-size: 1.25rem;
+  }
+
+  .current-price {
+    font-size: 1.75rem;
+  }
+
+  .original-price {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bundle-card {
+    padding: 1rem;
+  }
+
+  .bundle-pricing {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .savings-badge {
+    align-self: flex-start;
+  }
+} 

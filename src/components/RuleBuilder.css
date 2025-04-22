@@ -1,1 +1,153 @@
- 
+.rule-builder {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rule-header {
+  margin-bottom: 2rem;
+}
+
+.rule-header h2 {
+  color: #1a365d;
+  margin-bottom: 1rem;
+}
+
+.rule-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rule-info input,
+.rule-info textarea {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.rule-info textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.conditions-section,
+.actions-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.conditions-section h3,
+.actions-section h3 {
+  color: #1a365d;
+  margin-bottom: 1rem;
+}
+
+.condition-builder,
+.action-builder {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.condition-builder select,
+.action-builder select,
+.condition-builder input,
+.action-builder input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 1rem;
+  min-width: 150px;
+}
+
+.condition-builder button,
+.action-builder button {
+  padding: 0.75rem 1.5rem;
+  background: #2c5282;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.condition-builder button:hover,
+.action-builder button:hover {
+  background: #1a365d;
+}
+
+.conditions-list,
+.actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.condition-item,
+.action-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}
+
+.condition-item button,
+.action-item button {
+  padding: 0.5rem 1rem;
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.condition-item button:hover,
+.action-item button:hover {
+  background: #c53030;
+}
+
+.save-button {
+  width: 100%;
+  padding: 1rem;
+  background: #2c5282;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-button:hover {
+  background: #1a365d;
+}
+
+@media (max-width: 768px) {
+  .rule-builder {
+    padding: 1rem;
+  }
+
+  .condition-builder,
+  .action-builder {
+    flex-direction: column;
+  }
+
+  .condition-builder select,
+  .action-builder select,
+  .condition-builder input,
+  .action-builder input {
+    width: 100%;
+  }
+} 

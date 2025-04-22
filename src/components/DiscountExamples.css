@@ -1,1 +1,248 @@
- 
+.discount-examples {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.discount-examples h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.examples-intro {
+  color: #666;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+.discount-type-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.discount-type-section h2 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.discount-description {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.rules-summary {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rules-summary h3 {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.rules-summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rules-summary li {
+  color: #666;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rules-summary li:last-child {
+  border-bottom: none;
+}
+
+.scenarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.scenario-card {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.scenario-card:hover {
+  transform: translateY(-4px);
+}
+
+.scenario-card h3 {
+  color: #2c3e50;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.scenario-card p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.price-breakdown {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.price-row:last-child {
+  border-bottom: none;
+}
+
+.price-row.discount {
+  color: #10b981;
+}
+
+.price-row.total {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.stack-counts {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.stack-counts h4 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.stack-counts ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stack-counts li {
+  color: #666;
+  padding: 0.25rem 0;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .discount-examples h1 {
+    color: #ffffff;
+  }
+
+  .examples-intro {
+    color: #a0aec0;
+  }
+
+  .discount-type-section {
+    background: #2d2d2d;
+  }
+
+  .discount-type-section h2 {
+    color: #ffffff;
+  }
+
+  .discount-description {
+    color: #a0aec0;
+  }
+
+  .rules-summary {
+    background: #1a1a1a;
+  }
+
+  .rules-summary h3 {
+    color: #ffffff;
+  }
+
+  .rules-summary li {
+    color: #a0aec0;
+    border-color: #404040;
+  }
+
+  .scenario-card {
+    background: #1a1a1a;
+  }
+
+  .scenario-card h3 {
+    color: #ffffff;
+  }
+
+  .scenario-card p {
+    color: #a0aec0;
+  }
+
+  .price-breakdown,
+  .stack-counts {
+    background: #2d2d2d;
+  }
+
+  .price-row {
+    border-color: #404040;
+  }
+
+  .price-row.discount {
+    color: #34d399;
+  }
+
+  .price-row.total {
+    color: #ffffff;
+    border-color: #404040;
+  }
+
+  .stack-counts h4 {
+    color: #ffffff;
+  }
+
+  .stack-counts li {
+    color: #a0aec0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .discount-examples {
+    padding: 1rem;
+  }
+
+  .discount-examples h1 {
+    font-size: 2rem;
+  }
+
+  .examples-intro {
+    font-size: 1rem;
+  }
+
+  .discount-type-section {
+    padding: 1.5rem;
+  }
+
+  .scenarios-grid {
+    grid-template-columns: 1fr;
+  }
+} 

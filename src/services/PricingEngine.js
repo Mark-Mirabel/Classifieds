@@ -1,6 +1,5 @@
 import { RateCard } from '../models/pricing/RateCard';
 import { Package } from '../models/pricing/Package';
-import { AddOn } from '../models/pricing/AddOn';
 import { Rule } from '../models/pricing/Rule';
 import { Discount } from '../models/pricing/Discount';
 import { PromoCode } from '../models/pricing/PromoCode';
@@ -199,7 +198,6 @@ class PricingEngine {
   createPricingContext(cart) {
     return {
       category: cart.category,
-      addOns: cart.addOns,
       publicationCount: cart.publicationCount,
       client: cart.client,
       date: new Date(),
@@ -209,18 +207,12 @@ class PricingEngine {
     };
   }
 
-  // Calculate base price from rate card and add-ons
+  // Calculate base price from rate card
   calculateBasePrice(cart) {
     let basePrice = 0;
 
     if (cart.rateCard) {
       basePrice += cart.rateCard.calculatePrice(cart.quantity);
-    }
-
-    if (cart.addOns) {
-      cart.addOns.forEach(addOn => {
-        basePrice += addOn.calculatePrice();
-      });
     }
 
     return basePrice;

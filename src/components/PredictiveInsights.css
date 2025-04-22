@@ -1,0 +1,337 @@
+.predictive-insights {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.predictive-insights h2 {
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.insight-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.insight-card h3 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+/* Custom tooltip styling */
+.custom-tooltip {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.tooltip-value {
+  color: #4a90e2;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insight-card {
+    padding: 1rem;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+}
+
+/* Chart specific styles */
+.recharts-cartesian-grid line {
+  stroke: #eee;
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-size: 0.8rem;
+  fill: #666;
+}
+
+.recharts-legend-item-text {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.recharts-tooltip-cursor {
+  fill: rgba(0, 0, 0, 0.05);
+}
+
+/* Pie chart specific styles */
+.recharts-pie-label-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Bar chart specific styles */
+.recharts-bar-rectangle {
+  transition: fill 0.2s ease;
+}
+
+/* Line chart specific styles */
+.recharts-line {
+  transition: stroke-width 0.2s ease;
+}
+
+.recharts-line:hover {
+  stroke-width: 3;
+}
+
+/* Projected Revenue Styles */
+.period-selector {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.period-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  background: #fff;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.period-button:hover {
+  background: #f1f3f5;
+}
+
+.period-button.active {
+  background: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+}
+
+.revenue-projection {
+  text-align: center;
+}
+
+.projection-amount {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4a90e2;
+  margin-bottom: 0.5rem;
+}
+
+.projection-label {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+/* Churn Risk Styles */
+.churn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.churn-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.client-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.client-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.risk-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.payment-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.last-payment {
+  color: #666;
+}
+
+.payment-amount {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+/* Failed Payment Styles */
+.failed-payments {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.failed-payment-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.attempts-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  background: #ff6b6b;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.payment-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.last-attempt {
+  color: #666;
+}
+
+/* Declining Spend Styles */
+.declining-spend {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.spend-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.client-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.spend-change {
+  font-weight: 600;
+}
+
+.spend-change.negative {
+  color: #ff6b6b;
+}
+
+.spend-comparison {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.current-spend {
+  color: #666;
+}
+
+.previous-spend {
+  color: #666;
+}
+
+/* Unpaid Ads Styles */
+.unpaid-ads {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.unpaid-ad-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.days-overdue {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  background: #ff6b6b;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.ad-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.ad-title {
+  color: #666;
+} 

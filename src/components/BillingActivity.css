@@ -1,0 +1,227 @@
+.billing-activity {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.billing-activity h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.chart-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Top Advertisers Styles */
+.advertisers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.advertiser-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.advertiser-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.advertiser-spend {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+/* Billing Types Styles */
+.billing-types {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.billing-type {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.type-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.type-percentage {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+.type-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.type-bar-fill {
+  height: 100%;
+  background: #4a90e2;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Renewals Styles */
+.renewals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.renewal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.renewal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.renewal-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.renewal-date {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.renewal-amount {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+/* Aging Report Styles */
+.aging-report {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aging-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.aging-period {
+  font-weight: 500;
+  color: #333;
+}
+
+.aging-amount {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+/* Payment Methods Styles */
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-method {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.method-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.method-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.method-percentage {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+.method-bar {
+  height: 8px;
+  background: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.method-bar-fill {
+  height: 100%;
+  background: #4a90e2;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .billing-activity {
+    padding: 1rem;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    padding: 1rem;
+  }
+} 
