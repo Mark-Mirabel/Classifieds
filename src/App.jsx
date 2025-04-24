@@ -28,6 +28,7 @@ import PlansPage from './pages/PlansPage';
 import AdminSection from './components/AdminSection';
 import AddOnsPage from './pages/AddOnsPage';
 import RateCardTypes from './pages/RateCardTypes';
+import PlanBuilder from './pages/PlanBuilder';
 
 function App() {
   const [currentStep, setCurrentStep] = useState('publications');
@@ -112,7 +113,7 @@ function App() {
                   <Link to="/add-ons" className="dropdown-item">
                     Add-Ons
                   </Link>
-                  <Link to="/rate-cards/setup" className="dropdown-item">
+                  <Link to="/plan-builder" className="dropdown-item">
                     Plan Builder
                   </Link>
                   <Link to="/rate-cards/types" className="dropdown-item">
@@ -182,6 +183,9 @@ function App() {
             <Route path="/order-system/setup" element={<OrderSystemSetup />} />
             <Route path="/plans" element={<PlansPage />} />
             <Route path="/add-ons" element={<AddOnsPage />} />
+            <Route path="/plan-builder" element={<PlanBuilder />} />
+            <Route path="/plan-builder/:id" element={<PlanBuilder />} />
+            <Route path="/rate-cards" element={<RateCardPage />} />
             <Route path="/rate-cards/:category" element={<RateCardPage />} />
             <Route path="/rate-cards/setup" element={<RateCardSetup />} />
             <Route path="/rate-cards/types" element={<RateCardTypesPage />} />

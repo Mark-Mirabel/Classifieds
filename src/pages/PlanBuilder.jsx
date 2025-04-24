@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useApp } from '../contexts/AppContext';
 import './PlanBuilder.css';
 
 const PlanBuilder = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { plans, addPlan, updatePlan } = useApp();
   const [plan, setPlan] = useState({
     name: '',
     description: '',
@@ -14,106 +16,23 @@ const PlanBuilder = () => {
     isRecurring: true,
     renewalDiscount: 0,
     maxRenewals: 12,
-    isActive: true
+    isActive: true,
+    features: []
   });
-
-  // Create sample plans if none exist
-  useEffect(() => {
-    const storedPlans = localStorage.getItem('plans');
-    if (!storedPlans) {
-      const samplePlans = [
-        {
-          id: '1',
-          name: 'Basic Real Estate Listing',
-          description: 'Standard real estate listing with basic features',
-          category: 'Real Estate',
-          duration: 30,
-          price: 29.99,
-          isRecurring: true,
-          renewalDiscount: 10,
-          maxRenewals: 12,
-          isActive: true,
-          features: [
-            '30-day listing duration',
-            'Basic listing format',
-            'One photo included',
-            'Standard placement'
-          ]
-        },
-        {
-          id: '2',
-          name: 'Premium Real Estate Listing',
-          description: 'Enhanced real estate listing with premium features',
-          category: 'Real Estate',
-          duration: 60,
-          price: 49.99,
-          isRecurring: true,
-          renewalDiscount: 15,
-          maxRenewals: 12,
-          isActive: true,
-          features: [
-            '60-day listing duration',
-            'Enhanced listing format',
-            'Up to 5 photos',
-            'Priority placement',
-            'Featured badge'
-          ]
-        },
-        {
-          id: '3',
-          name: 'Basic Automotive Listing',
-          description: 'Standard vehicle listing with basic features',
-          category: 'Automotive',
-          duration: 30,
-          price: 19.99,
-          isRecurring: true,
-          renewalDiscount: 10,
-          maxRenewals: 12,
-          isActive: true,
-          features: [
-            '30-day listing duration',
-            'Basic listing format',
-            'One photo included',
-            'Standard placement'
-          ]
-        },
-        {
-          id: '4',
-          name: 'Premium Automotive Listing',
-          description: 'Enhanced vehicle listing with premium features',
-          category: 'Automotive',
-          duration: 60,
-          price: 39.99,
-          isRecurring: true,
-          renewalDiscount: 15,
-          maxRenewals: 12,
-          isActive: true,
-          features: [
-            '60-day listing duration',
-            'Enhanced listing format',
-            'Up to 5 photos',
-            'Priority placement',
-            'Featured badge'
-          ]
-        }
-      ];
-      localStorage.setItem('plans', JSON.stringify(samplePlans));
-    }
-  }, []);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // If editing an existing plan, load its data
+    // If editing an existing plan, load its data from AppContext
     if (id) {
-      const storedPlans = localStorage.getItem('plans');
-      if (storedPlans) {
-        const plans = JSON.parse(storedPlans);
-        const existingPlan = plans.find(p => p.id === id);
-        if (existingPlan) {
-          setPlan(existingPlan);
-        }
+      const existingPlan = plans.find(p => p.id === id);
+      if (existingPlan) {
+        setPlan(existingPlan);
+      } else {
+        setError('Plan not found');
       }
     }
-  }, [id]);
+  }, [id, plans]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -123,26 +42,49 @@ const PlanBuilder = () => {
     }));
   };
 
-  const handleSave = () => {
-    const storedPlans = localStorage.getItem('plans');
-    const plans = storedPlans ? JSON.parse(storedPlans) : [];
-    
-    if (id) {
-      // Update existing plan
-      const updatedPlans = plans.map(p => 
-        p.id === id ? { ...plan, id } : p
-      );
-      localStorage.setItem('plans', JSON.stringify(updatedPlans));
-    } else {
-      // Create new plan
-      const newPlan = {
+  const handleSave = async () => {
+    try {
+      setError(null);
+      
+      // Validate required fields
+      if (!plan.name || !plan.description || !plan.category) {
+        setError('Please fill in all required fields');
+        return;
+      }
+
+      // Create a complete plan object
+      const planToSave = {
         ...plan,
-        id: Date.now().toString()
+        duration: Number(plan.duration),
+        price: Number(plan.price),
+        renewalDiscount: Number(plan.renewalDiscount),
+        maxRenewals: Number(plan.maxRenewals),
+        features: plan.features || []
       };
-      localStorage.setItem('plans', JSON.stringify([...plans, newPlan]));
+
+      console.log('Saving plan:', planToSave);
+
+      if (id) {
+        // Update existing plan
+        updatePlan(id, planToSave);
+        console.log('Updated plan with ID:', id);
+      } else {
+        // Create new plan
+        const newPlan = addPlan(planToSave);
+        console.log('Created new plan with ID:', newPlan.id);
+      }
+      
+      // Show success message
+      setShowSuccess(true);
+      
+      // Navigate after a short delay
+      setTimeout(() => {
+        navigate('/plans');
+      }, 1500);
+    } catch (err) {
+      console.error('Error saving plan:', err);
+      setError('Failed to save plan. Please try again.');
     }
-    
-    navigate('/plans');
   };
 
   return (
@@ -154,9 +96,21 @@ const PlanBuilder = () => {
         </button>
       </div>
 
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
+
+      {showSuccess && (
+        <div className="success-message">
+          Plan {id ? 'updated' : 'created'} successfully!
+        </div>
+      )}
+
       <div className="plan-form">
         <div className="form-group">
-          <label htmlFor="name">Plan Name</label>
+          <label htmlFor="name">Plan Name *</label>
           <input
             type="text"
             id="name"
@@ -168,7 +122,7 @@ const PlanBuilder = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">Description *</label>
           <textarea
             id="description"
             name="description"
@@ -179,7 +133,7 @@ const PlanBuilder = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="category">Category</label>
+          <label htmlFor="category">Category *</label>
           <select
             id="category"
             name="category"

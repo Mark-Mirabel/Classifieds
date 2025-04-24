@@ -21,13 +21,53 @@ export const AppProvider = ({ children }) => {
         const savedDiscounts = localStorage.getItem('discounts');
         const savedRateTypes = localStorage.getItem('rateTypes');
 
-        console.log('Loading plans from localStorage:', savedPlans);
-
         if (savedRateCards) setRateCards(JSON.parse(savedRateCards));
         if (savedPlans) {
           const parsedPlans = JSON.parse(savedPlans);
-          console.log('Parsed plans:', parsedPlans);
           setPlans(parsedPlans);
+        } else {
+          // Initialize with sample plans if none exist
+          const samplePlans = [
+            {
+              id: '1',
+              name: 'Basic Real Estate Listing',
+              description: 'Standard real estate listing with basic features',
+              category: 'Real Estate',
+              duration: 30,
+              price: 29.99,
+              isRecurring: true,
+              renewalDiscount: 10,
+              maxRenewals: 12,
+              isActive: true,
+              features: [
+                '30-day listing duration',
+                'Basic listing format',
+                'One photo included',
+                'Standard placement'
+              ]
+            },
+            {
+              id: '2',
+              name: 'Premium Real Estate Listing',
+              description: 'Enhanced real estate listing with premium features',
+              category: 'Real Estate',
+              duration: 60,
+              price: 49.99,
+              isRecurring: true,
+              renewalDiscount: 15,
+              maxRenewals: 12,
+              isActive: true,
+              features: [
+                '60-day listing duration',
+                'Enhanced listing format',
+                'Up to 5 photos',
+                'Priority placement',
+                'Featured badge'
+              ]
+            }
+          ];
+          setPlans(samplePlans);
+          localStorage.setItem('plans', JSON.stringify(samplePlans));
         }
         if (savedAddOns) setAddOns(JSON.parse(savedAddOns));
         if (savedDiscounts) setDiscounts(JSON.parse(savedDiscounts));
@@ -44,7 +84,6 @@ export const AppProvider = ({ children }) => {
   // Save data to localStorage when it changes
   useEffect(() => {
     try {
-      console.log('Saving plans to localStorage:', plans);
       localStorage.setItem('rateCards', JSON.stringify(rateCards));
       localStorage.setItem('plans', JSON.stringify(plans));
       localStorage.setItem('addOns', JSON.stringify(addOns));
@@ -72,13 +111,16 @@ export const AppProvider = ({ children }) => {
   };
 
   const addPlan = (plan) => {
-    console.log('Adding new plan:', plan);
     const newPlan = {
       ...plan,
-      id: Date.now().toString()
+      id: Date.now().toString(),
+      isActive: true,
+      features: plan.features || []
     };
     setPlans(prevPlans => {
       const updatedPlans = [...prevPlans, newPlan];
+      localStorage.setItem('plans', JSON.stringify(updatedPlans));
+      console.log('Added new plan:', newPlan);
       console.log('Updated plans array:', updatedPlans);
       return updatedPlans;
     });
@@ -86,20 +128,22 @@ export const AppProvider = ({ children }) => {
   };
 
   const updatePlan = (id, updates) => {
-    console.log('Updating plan:', id, updates);
     setPlans(prevPlans => {
       const updatedPlans = prevPlans.map(plan => 
         plan.id === id ? { ...plan, ...updates } : plan
       );
+      localStorage.setItem('plans', JSON.stringify(updatedPlans));
+      console.log('Updated plan with ID:', id);
       console.log('Updated plans array:', updatedPlans);
       return updatedPlans;
     });
   };
 
   const deletePlan = (id) => {
-    console.log('Deleting plan:', id);
     setPlans(prevPlans => {
       const updatedPlans = prevPlans.filter(plan => plan.id !== id);
+      localStorage.setItem('plans', JSON.stringify(updatedPlans));
+      console.log('Deleted plan with ID:', id);
       console.log('Updated plans array:', updatedPlans);
       return updatedPlans;
     });

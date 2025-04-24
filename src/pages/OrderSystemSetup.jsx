@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './OrderSystemSetup.css';
 import PlanService from '../services/PlanService';
@@ -24,10 +24,60 @@ const OrderSystemSetup = () => {
   const [selectedPublication, setSelectedPublication] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  // Initialize PlanService with plans from localStorage
-  const storedPlans = localStorage.getItem('plans');
-  const plans = storedPlans ? JSON.parse(storedPlans) : [];
-  const planService = new PlanService(plans);
+  // Move PlanService to state
+  const [planService, setPlanService] = useState(null);
+
+  // Initialize PlanService and sample plans if none exist
+  useEffect(() => {
+    const storedPlans = localStorage.getItem('plans');
+    const plans = storedPlans ? JSON.parse(storedPlans) : [];
+
+    if (plans.length === 0) {
+      const samplePlans = [
+        {
+          id: '1',
+          name: 'Basic Real Estate Plan',
+          description: 'Essential features for real estate listings',
+          category: 'Real Estate',
+          duration: 30,
+          price: 29.99,
+          isRecurring: true,
+          renewalDiscount: 10,
+          maxRenewals: 12,
+          isActive: true,
+          features: [
+            '30-day listing duration',
+            'Basic listing format',
+            'One photo included',
+            'Standard placement'
+          ]
+        },
+        {
+          id: '2',
+          name: 'Premium Real Estate Plan',
+          description: 'Enhanced real estate listing with premium features',
+          category: 'Real Estate',
+          duration: 60,
+          price: 49.99,
+          isRecurring: true,
+          renewalDiscount: 15,
+          maxRenewals: 12,
+          isActive: true,
+          features: [
+            '60-day listing duration',
+            'Enhanced listing format',
+            'Up to 5 photos',
+            'Priority placement',
+            'Featured badge'
+          ]
+        }
+      ];
+      localStorage.setItem('plans', JSON.stringify(samplePlans));
+      setPlanService(new PlanService(samplePlans));
+    } else {
+      setPlanService(new PlanService(plans));
+    }
+  }, []);
 
   const categories = {
     'Real Estate': [
@@ -73,7 +123,7 @@ const OrderSystemSetup = () => {
       { id: '36', name: 'Hospitality / Food Service', icon: '🍽️' },
       { id: '37', name: 'Transportation / Delivery', icon: '🚚' },
       { id: '38', name: 'Customer Service / Call Center', icon: '📞' },
-      { id: '39', name: 'Retail / Sales', icon: '🛍️' },
+      { id: '39', name: 'Retail / Sales', icon: '��️' },
       { id: '40', name: 'Job Wanted', icon: '🔍' },
       { id: '41', name: 'Employment Agencies', icon: '🤝' },
       { id: '42', name: 'Training / Certification', icon: '📜' }
@@ -319,10 +369,19 @@ const OrderSystemSetup = () => {
   };
 
   const handleCategorySelect = (categoryId, categoryName) => {
+    console.log('Selected category:', { id: categoryId, name: categoryName });
+    
+    // Extract the main category from the subcategory name
+    const mainCategory = Object.keys(categories).find(cat => 
+      categories[cat].some(subCat => subCat.id === categoryId)
+    );
+    
+    console.log('Main category:', mainCategory);
+    
     setSelectedCategories([{ id: categoryId, name: categoryName }]);
     setOrderSystem(prev => ({
       ...prev,
-      category: categoryName
+      category: mainCategory // Use the main category name instead of the subcategory
     }));
     handleNext(); // Advance to the next step
   };
@@ -449,27 +508,50 @@ const OrderSystemSetup = () => {
           </div>
         );
       case 'plan':
+        console.log('Rendering plan step');
+        console.log('Selected categories:', selectedCategories);
+        console.log('Selected category name:', selectedCategories[0]?.name);
+        console.log('PlanService:', planService);
+        console.log('Available plans:', planService?.getPlansByCategory(selectedCategories[0]?.name));
+        
+        if (!planService) {
+          return (
+            <div className="step-content">
+              <h2>Loading plans...</h2>
+            </div>
+          );
+        }
+
+        const availablePlans = planService.getPlansByCategory(selectedCategories[0]?.name) || [];
+        console.log('Filtered plans:', availablePlans);
+
         return (
           <div className="step-content">
             <h2>Select a Plan</h2>
-            <div className="plans-grid">
-              {planService.getPlansByCategory(selectedCategories[0]?.name).map(plan => (
-                <div 
-                  key={plan.id} 
-                  className={`plan-card ${orderSystem.categoryPlans?.[selectedCategories[0]?.id] === plan.id ? 'selected' : ''}`}
-                  onClick={() => handlePlanSelect(selectedCategories[0]?.id, plan.id)}
-                >
-                  <h3>{plan.name}</h3>
-                  <p className="price">${plan.price}</p>
-                  <p className="description">{plan.description}</p>
-                  <ul className="features">
-                    {plan.features.map((feature, index) => (
-                      <li key={index}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+            {availablePlans.length === 0 ? (
+              <div className="no-plans-message">
+                <p>No plans available for this category. Please create a plan first.</p>
+              </div>
+            ) : (
+              <div className="plans-grid">
+                {availablePlans.map(plan => (
+                  <div 
+                    key={plan.id} 
+                    className={`plan-card ${orderSystem.categoryPlans?.[selectedCategories[0]?.id] === plan.id ? 'selected' : ''}`}
+                    onClick={() => handlePlanSelect(selectedCategories[0]?.id, plan.id)}
+                  >
+                    <h3>{plan.name}</h3>
+                    <p className="price">${plan.price}</p>
+                    <p className="description">{plan.description}</p>
+                    <ul className="features">
+                      {plan.features.map((feature, index) => (
+                        <li key={index}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         );
       case 'addons':
