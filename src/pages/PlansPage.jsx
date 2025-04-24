@@ -5,21 +5,35 @@ import './PlansPage.css';
 
 const PlansPage = () => {
   const navigate = useNavigate();
-  const { plans } = useApp();
+  //const { rateCards } = useApp();
   const [filteredPlans, setFilteredPlans] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
+  const [rateCards, setRateCards] = useState([]);
 
   useEffect(() => {
     // Extract unique categories
-    const uniqueCategories = ['all', ...new Set(plans.map(plan => plan.category))];
+    const uniqueCategories = ['all', ...new Set(rateCards.map(ratecard => ratecard.category))];
     setCategories(uniqueCategories);
-  }, [plans]);
+  }, [rateCards]);
+
+   // Load data when the component mounts
+   useEffect(() => {
+    const loadData = () => {
+      const savedRateCards = localStorage.getItem('rateCards');
+      if (savedRateCards) {
+        // Assuming you have a function to set rateCards in context
+        setRateCards(JSON.parse(savedRateCards)); // Or however you want to filter
+      }
+    };
+    loadData();
+  }, []); // This will run only once when PlansPage mounts
 
   useEffect(() => {
-    let filtered = plans;
+    let filtered = rateCards;
 
+    debugger;
     // Apply category filter
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(plan => plan.category === selectedCategory);
@@ -36,7 +50,7 @@ const PlansPage = () => {
     }
 
     setFilteredPlans(filtered);
-  }, [searchTerm, selectedCategory, plans]);
+  }, [searchTerm, selectedCategory, rateCards]);
 
   const handleCreateNew = () => {
     navigate('/plan-builder');
@@ -93,7 +107,7 @@ const PlansPage = () => {
             <div className="plan-features">
               <h4>Features:</h4>
               <ul>
-                {plan.features.map((feature, index) => (
+                {plan.features?.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
