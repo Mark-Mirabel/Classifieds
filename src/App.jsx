@@ -113,7 +113,7 @@ function App() {
                   <Link to="/add-ons" className="dropdown-item">
                     Add-Ons
                   </Link>
-                  <Link to="/plan-builder" className="dropdown-item">
+                  <Link to="/rate-cards/setup" className="dropdown-item">
                     Plan Builder
                   </Link>
                   <Link to="/rate-cards/types" className="dropdown-item">

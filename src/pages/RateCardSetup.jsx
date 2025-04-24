@@ -1222,7 +1222,7 @@ const RateCardSetup = () => {
       </div>
 
       <div className="setup-form">
-        <div className="step-actions top-actions">
+        {/* <div className="step-actions top-actions">
           {currentStep > 1 && (
             <button className="back-button" onClick={handleBack}>
               <span className="button-icon">←</span>
@@ -1244,7 +1244,7 @@ const RateCardSetup = () => {
               <span className="button-icon">✓</span>
             </button>
           )}
-        </div>
+        </div> */}
 
         {renderStep()}
 
