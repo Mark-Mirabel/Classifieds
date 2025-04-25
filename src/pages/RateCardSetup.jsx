@@ -531,22 +531,30 @@ const RateCardSetup = () => {
   };
 
   const handleSave = () => {
-    // Generate a unique ID for the new rate card
-    const newRateCard = {
-      ...rateCard,
-      id: Date.now().toString(),
-      createdAt: new Date().toISOString()
-    };
-
     // Get existing rate cards from localStorage
     const existingRateCards = JSON.parse(localStorage.getItem('rateCards') || '[]');
-    
-    // Add the new rate card
-    const updatedRateCards = [...existingRateCards, newRateCard];
-    
+  
+    let updatedRateCards;
+    if (rateCardId) {
+      // Update existing rate card
+      updatedRateCards = existingRateCards.map(card =>
+        card.id === rateCardId ? { ...rateCard, id: rateCardId } : card
+      );
+    } else {
+      // Generate a unique ID for the new rate card
+      const newRateCard = {
+        ...rateCard,
+        id: Date.now().toString(),
+        createdAt: new Date().toISOString()
+      };
+  
+      // Add the new rate card
+      updatedRateCards = [...existingRateCards, newRateCard];
+    }
+  
     // Save back to localStorage
     localStorage.setItem('rateCards', JSON.stringify(updatedRateCards));
-    
+  
     // Navigate to the rate cards page
     navigate('/plans');
   };
