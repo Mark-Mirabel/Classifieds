@@ -7,7 +7,7 @@ import {steps, rateTypes, availableDiscounts, availableAddOns } from './RateCard
 const PlansPage = () => {
   const navigate = useNavigate();
   //const { rateCards } = useApp();
-  const [filteredPlans, setFilteredPlans] = useState([]);
+  const [filteredRatecards, setFilteredRateCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [categories, setCategories] = useState([]);
@@ -30,7 +30,7 @@ const PlansPage = () => {
     };
     loadData();
   }, []); // This will run only once when PlansPage mounts
-
+//fddg
   useEffect(() => {
     let filtered = rateCards;
 
@@ -49,16 +49,16 @@ const PlansPage = () => {
         plan.category.toLowerCase().includes(term)
       );
     }
-
-    setFilteredPlans(filtered);
+    console.log(filtered);
+    setFilteredRateCards(filtered);
   }, [searchTerm, selectedCategory, rateCards]);
 
   const handleCreateNew = () => {
-    navigate('/plan-builder');
+    navigate('/rate-cards/setup');
   };
 
   const handleEditPlan = (planId) => {
-    navigate(`/plan-builder/${planId}`);
+    navigate(`/rate-cards/setup`);
   };
 
   return (
@@ -94,50 +94,78 @@ const PlansPage = () => {
       </div>
 
       <div className="plans-grid">
-        {filteredPlans.map(plan => (
-          <div key={plan.id} className="plan-card">
-            <div className="plan-header">
-              <h3>{plan.name}</h3>
-              <span className={`status-badge ${plan.isActive ? 'active' : 'inactive'}`}>
-                {plan.isActive ? 'Active' : 'Inactive'}
+        {filteredRatecards.map(rateCard => (
+          <div key={rateCard.id} className="plan-card">
+          <div className="plan-header">
+            <h2>{rateCard.name}</h2>
+            <span className={`status-badge ${rateCard.isActive ? 'active' : 'inactive'}`}>
+              {rateCard.isActive ? 'Active' : 'Inactive'}
+            </span>
+          </div>
+        
+          <p className="plan-description">{rateCard.description}</p>
+        
+          <div className="plan-details">
+            <div className="detail-item">
+              <span className="detail-label">Type:</span>
+              <span className="detail-value">
+                {rateTypes.find(t => t.id === rateCard.type)?.name}
               </span>
             </div>
-            <div className="plan-category">{plan.category}</div>
-            <div className="plan-price">${plan.price}/month</div>
-            <p className="plan-description">{plan.description}</p>
-            <div className="plan-features">
-              <h4>Features:</h4>
-              <ul>
-                {plan.features?.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="plan-details">
-              <div className="detail-item">
-                <span className="detail-label">Duration:</span>
-                <span className="detail-value">{plan.duration} days</span>
-              </div>
-              {plan.isRecurring && (
-                <div className="detail-item">
-                  <span className="detail-label">Renewal Discount:</span>
-                  <span className="detail-value">{plan.renewalDiscount}%</span>
-                </div>
-              )}
-              <div className="detail-item">
-                <span className="detail-label">Max Renewals:</span>
-                <span className="detail-value">{plan.maxRenewals}</span>
-              </div>
-            </div>
-            <div className="plan-actions">
-              <button 
-                className="edit-button"
-                onClick={() => handleEditPlan(plan.id)}
-              >
-                Edit Plan
-              </button>
+          </div>
+        
+          <div className="plan-section">
+            <h3>Rate Details</h3>
+            <div className="rate-grid">
+              {Object.entries(rateCard.rates).map(([key, value]) => (
+                value && (
+                  <div key={key} className="detail-item">
+                    <span className="detail-label">{key}:</span>
+                    <span className="detail-value">{value}</span>
+                  </div>
+                )
+              ))}
             </div>
           </div>
+        
+          {rateCard.addOns.length > 0 && (
+            <div className="plan-section">
+              <h3>Selected Add-Ons</h3>
+              {rateCard.addOns.map(addOnId => {
+                const addOn = availableAddOns.find(a => a.id === addOnId);
+                return (
+                  <div key={addOnId} className="detail-item">
+                    <span className="detail-label">{addOn?.icon} {addOn?.name}</span>
+                    <span className="detail-value">${addOn?.price.toFixed(2)}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        
+          {rateCard.discounts.length > 0 && (
+            <div className="plan-section">
+              <h3>Selected Discounts</h3>
+              {rateCard.discounts.map(discountId => {
+                const discount = availableDiscounts.find(d => d.id === discountId);
+                return (
+                  <div key={discountId} className="detail-item">
+                    <span className="detail-label">{discount?.name}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        
+          <div className="plan-actions">
+            <button 
+              className="edit-button"
+              onClick={() => handleEditPlan(rateCard.id)}
+            >
+              Edit Plan
+            </button>
+          </div>
+        </div>
         ))}
       </div>
     </div>
