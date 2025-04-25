@@ -58,7 +58,7 @@ const PlansPage = () => {
   };
 
   const handleEditPlan = (planId) => {
-    navigate(`/rate-cards/setup`);
+    navigate(`/rate-cards/setup/${planId}`);
   };
 
   return (

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './RateCardSetup.css';
 
 
@@ -418,6 +418,7 @@ export const availableAddOns = [
 
 const RateCardSetup = () => {
   const navigate = useNavigate();
+  const { rateCardId } = useParams();
   const [currentStep, setCurrentStep] = useState(1);
   const [rateCard, setRateCard] = useState({
     name: '',
@@ -453,7 +454,17 @@ const RateCardSetup = () => {
     discounts: []
   });
 
-  
+  // Fetch rate card details when the component mounts or the rateCardId changes
+  useEffect(() => {
+    if (rateCardId) {
+      const existingRateCards = JSON.parse(localStorage.getItem('rateCards') || '[]');
+      const foundCard = existingRateCards.find(card => card.id === rateCardId);
+      if (foundCard) {
+        setRateCard(foundCard);
+        setCurrentStep(1); // Move to the 'Rate Details' step or any appropriate step
+      }
+    }
+  }, [rateCardId]);
 
   // Group add-ons by category
   const groupedAddOns = availableAddOns.reduce((acc, addOn) => {

@@ -188,6 +188,7 @@ function App() {
             <Route path="/rate-cards" element={<RateCardPage />} />
             <Route path="/rate-cards/:category" element={<RateCardPage />} />
             <Route path="/rate-cards/setup" element={<RateCardSetup />} />
+            <Route path="/rate-cards/setup/:rateCardId" element={<RateCardSetup />} />
             <Route path="/rate-cards/types" element={<RateCardTypesPage />} />
             <Route path="/rate-cards/types/:typeId" element={<RateCardTypePage />} />
             <Route path="/discounts" element={<DiscountsPage />} />
