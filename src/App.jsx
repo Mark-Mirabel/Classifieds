@@ -29,6 +29,7 @@ import AdminSection from './components/AdminSection';
 import AddOnsPage from './pages/AddOnsPage';
 import RateCardTypes from './pages/RateCardTypes';
 import PlanBuilder from './pages/PlanBuilder';
+import HelpPage from './pages/HelpPage';
 
 function App() {
   const [currentStep, setCurrentStep] = useState('publications');
@@ -98,6 +99,7 @@ function App() {
               <Link to="/listings" className="nav-item">Listings</Link>
               <Link to="/messages" className="nav-item">Messages</Link>
               <Link to="/analytics" className="nav-item">Analytics</Link>
+              <Link to="/help" className="nav-item">Help</Link>
               <div className="nav-dropdown">
                 <button className="nav-item">Order Systems ▼</button>
                 <div className="nav-dropdown-content">
@@ -204,6 +206,7 @@ function App() {
             <Route path="/admin/users-guide" element={<UsersGuide />} />
             <Route path="/admin/features" element={<FeaturesTimeline />} />
             <Route path="/rate-card-types" element={<RateCardTypes />} />
+            <Route path="/help" element={<HelpPage />} />
           </Routes>
         </main>
 

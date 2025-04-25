@@ -110,42 +110,40 @@ const PlanBuilder = () => {
 
       <div className="plan-form">
         <div className="form-group">
-          <label htmlFor="name">Plan Name *</label>
+          <label htmlFor="name">name</label>
           <input
             type="text"
             id="name"
             name="name"
             value={plan.name}
             onChange={handleInputChange}
-            required
+            placeholder="Enter plan name"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="description">Description *</label>
+          <label htmlFor="description">name</label>
           <textarea
             id="description"
             name="description"
             value={plan.description}
             onChange={handleInputChange}
-            required
+            placeholder="Enter plan description"
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="category">Category *</label>
+          <label htmlFor="category">Category</label>
           <select
             id="category"
             name="category"
             value={plan.category}
             onChange={handleInputChange}
-            required
           >
-            <option value="">Select Category</option>
-            <option value="Real Estate">Real Estate</option>
-            <option value="Automotive">Automotive</option>
-            <option value="Jobs">Jobs</option>
-            <option value="Services">Services</option>
+            <option value="">Select a category</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+            <option value="enterprise">Enterprise</option>
           </select>
         </div>
 
@@ -158,7 +156,6 @@ const PlanBuilder = () => {
             value={plan.duration}
             onChange={handleInputChange}
             min="1"
-            required
           />
         </div>
 
@@ -172,7 +169,6 @@ const PlanBuilder = () => {
             onChange={handleInputChange}
             min="0"
             step="0.01"
-            required
           />
         </div>
 
@@ -182,7 +178,7 @@ const PlanBuilder = () => {
               type="checkbox"
               name="isRecurring"
               checked={plan.isRecurring}
-              onChange={(e) => setPlan(prev => ({ ...prev, isRecurring: e.target.checked }))}
+              onChange={(e) => handleInputChange({ target: { name: 'isRecurring', value: e.target.checked } })}
             />
             Recurring Plan
           </label>
@@ -217,9 +213,21 @@ const PlanBuilder = () => {
           </>
         )}
 
+        <div className="form-group">
+          <label>
+            <input
+              type="checkbox"
+              name="isActive"
+              checked={plan.isActive}
+              onChange={(e) => handleInputChange({ target: { name: 'isActive', value: e.target.checked } })}
+            />
+            Active Plan
+          </label>
+        </div>
+
         <div className="form-actions">
           <button className="save-button" onClick={handleSave}>
-            {id ? 'Save Changes' : 'Create Plan'}
+            Save Plan
           </button>
         </div>
       </div>
