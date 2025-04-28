@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useApp } from '../contexts/AppContext';
 import './PlansPage.css';
 import {steps, rateTypes, availableDiscounts, availableAddOns } from './RateCardSetup';
 
 const PlansPage = () => {
   const navigate = useNavigate();
-  //const { rateCards } = useApp();
   const [filteredRatecards, setFilteredRateCards] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
